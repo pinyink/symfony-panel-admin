@@ -2,6 +2,7 @@
 
 namespace App\Controller\Admin;
 
+use App\Entity\Product;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Locale;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
@@ -14,7 +15,7 @@ class DashboardController extends AbstractDashboardController
     #[Route('/admin', name: 'admin')]
     public function index(): Response
     {
-        return parent::index();
+        // return parent::index();
 
         // Option 1. You can make your dashboard redirect to some common page of your backend
         //
@@ -31,6 +32,8 @@ class DashboardController extends AbstractDashboardController
         // (tip: it's easier if your template extends from @EasyAdmin/page/content.html.twig)
         //
         // return $this->render('some/path/my-dashboard.html.twig');
+
+        return $this->render('admin/index.html.twig');
     }
 
     public function configureDashboard(): Dashboard
@@ -57,44 +60,13 @@ class DashboardController extends AbstractDashboardController
             // set this option if you prefer the page content to span the entire
             // browser width, instead of the default design which sets a max width
             ->renderContentMaximized()
-
-            // set this option if you prefer the sidebar (which contains the main menu)
-            // to be displayed as a narrow column instead of the default expanded design
-            ->renderSidebarMinimized()
-
-            // by default, users can select between a "light" and "dark" mode for the
-            // backend interface. Call this method if you prefer to disable the "dark"
-            // mode for any reason (e.g. if your interface customizations are not ready for it)
-            ->disableDarkMode()
-
-            // by default, all backend URLs are generated as absolute URLs. If you
-            // need to generate relative URLs instead, call this method
-            ->generateRelativeUrls()
-
-            // set this option if you want to enable locale switching in dashboard.
-            // IMPORTANT: this feature won't work unless you add the {_locale}
-            // parameter in the admin dashboard URL (e.g. '/admin/{_locale}').
-            // the name of each locale will be rendered in that locale
-            // (in the following example you'll see: "English", "Polski")
-            ->setLocales(['en', 'pl'])
-            // to customize the labels of locales, pass a key => value array
-            // (e.g. to display flags; although it's not a recommended practice,
-            // because many languages/locales are not associated to a single country)
-            ->setLocales([
-                'en' => '🇬🇧 English',
-                'pl' => '🇵🇱 Polski'
-            ])
-            // to further customize the locale option, pass an instance of
-            // EasyCorp\Bundle\EasyAdminBundle\Config\Locale
-            ->setLocales([
-                'en', // locale without custom options
-                Locale::new('pl', 'polski', 'far fa-language') // custom label and icon
-            ]);
+            ;
     }
 
     public function configureMenuItems(): iterable
     {
         yield MenuItem::linkToDashboard('Dashboard', 'fa fa-home');
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
+        yield MenuItem::linkToCrud('Product', 'fas fa-list', Product::class);
     }
 }
