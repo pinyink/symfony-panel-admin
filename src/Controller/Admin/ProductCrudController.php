@@ -35,7 +35,7 @@ class ProductCrudController extends AbstractCrudController
     {
         return [
             TextField::new('name'),
-            MoneyField::new('price')->setCurrency('IDR')->setNumDecimals(0)
+            MoneyField::new('price')->setCurrency('IDR')->setNumDecimals(2)->setStoredAsCents(false)
         ];
     }
 
