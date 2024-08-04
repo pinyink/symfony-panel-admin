@@ -8,6 +8,7 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
+use Symfony\Component\Translation\TranslatableMessage;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -32,8 +33,8 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name'),
-            MoneyField::new('price')->setCurrency('IDR')->setNumDecimals(2)->setStoredAsCents(false)
+            TextField::new('name', new TranslatableMessage('Nama', ['parameter' => 'value'], 'admin')),
+            MoneyField::new('price', new TranslatableMessage('Harga', ['parameter' => 'value'], 'admin'))->setCurrency('IDR')->setNumDecimals(2)->setStoredAsCents(false)
         ];
     }
 
