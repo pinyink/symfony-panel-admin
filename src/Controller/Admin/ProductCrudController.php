@@ -8,8 +8,6 @@ use EasyCorp\Bundle\EasyAdminBundle\Config\Crud;
 use EasyCorp\Bundle\EasyAdminBundle\Field\MoneyField;
 use EasyCorp\Bundle\EasyAdminBundle\Field\TextField;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Filters;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Action;
-use EasyCorp\Bundle\EasyAdminBundle\Config\Actions;
 
 class ProductCrudController extends AbstractCrudController
 {
@@ -44,15 +42,6 @@ class ProductCrudController extends AbstractCrudController
         return $filters
             ->add('name')
             ->add('price')
-        ;
-    }
-
-    public function configureActions(Actions $actions): Actions
-    {
-        return $actions
-            // ...
-            ->add(Crud::PAGE_INDEX, Action::DETAIL)
-            ->add(Crud::PAGE_EDIT, Action::SAVE_AND_ADD_ANOTHER)
         ;
     }
 }
