@@ -43,6 +43,7 @@ class ProductCrudController extends AbstractCrudController
     {
         return $filters
             ->add('name')
+            ->add('price')
         ;
     }
 
