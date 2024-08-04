@@ -36,6 +36,7 @@
                         </div>
                         <form method="post">
                             <input type="hidden" name="_csrf_token" value="{{ csrf_token('authenticate') }}">
+                            <input type="hidden" name="_target_path" value="/admin">
                             <div class="row gy-3 gy-md-4 overflow-hidden">
                                 <div class="col-12">
                                     <label for="email" class="form-label">Email <span
