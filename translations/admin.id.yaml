@@ -1,0 +1,11 @@
+Dashboard: 'Dashboard'
+crud:
+  title: Data %name%
+
+Product: 'Product'
+Products: 'Product Data'
+
+table:
+  product:
+    nama: 'Nama'
+    harga: 'Harga'

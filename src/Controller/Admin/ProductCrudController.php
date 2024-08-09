@@ -23,7 +23,7 @@ class ProductCrudController extends AbstractCrudController
             // the labels used to refer to this entity in titles, buttons, etc.
             ->setEntityLabelInSingular('Product')
             ->setEntityLabelInPlural('Products')
-            ->setPageTitle('index', 'Data %entity_label_plural%')
+            ->setPageTitle('index', new TranslatableMessage('crud.title', ['%name%' => 'Product'], 'admin'))
             ->setSearchFields(['name', 'price'])
             // call this method to focus the search input automatically when loading the 'index' page
             ->setAutofocusSearch()
@@ -33,8 +33,8 @@ class ProductCrudController extends AbstractCrudController
     public function configureFields(string $pageName): iterable
     {
         return [
-            TextField::new('name', new TranslatableMessage('Nama', ['parameter' => 'value'], 'admin')),
-            MoneyField::new('price', new TranslatableMessage('Harga', ['parameter' => 'value'], 'admin'))->setCurrency('IDR')->setNumDecimals(2)->setStoredAsCents(false)
+            TextField::new('name', new TranslatableMessage('table.product.nama', ['parameter' => 'value'], 'admin')),
+            MoneyField::new('price', new TranslatableMessage('table.product.harga', ['parameter' => 'value'], 'admin'))->setCurrency('IDR')->setNumDecimals(2)->setStoredAsCents(false)
         ];
     }
 
